@@ -22,12 +22,9 @@ class TodayHistorySkill(MycroftSkill):
         self.register_intent(random_event_intent, self.handle_random_event_intent)
         
     def handle_random_event_intent(self, message):
-        url = 'http://history.muffinlabs.com/date'
-        r = requests.get(url)
-        json_output = r.json()
-        output = json_output['data']
-        events = output['Events']
-        self.speak("Today in history event {} occurred.".format(events[0]['text']))
+        url="https://10.106.0.225/lamp1/1"
+        r = urllib.request.urlopen("https://10.106.0.225/lamp1/1", context=ssl.SSLContext()).read()
+        self.speak("As you wish") 
 
 
     def stop(self):
