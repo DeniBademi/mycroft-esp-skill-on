@@ -25,13 +25,13 @@ class TodayHistorySkill(MycroftSkill):
             require("secondLightKeyword").build()
         self.register_intent(random_event_intent2, self.handle_second_lamp_on_intent)
         
-        #random_event_intent3 = IntentBuilder("RandomEventIntent3").\
-        #    require("RandomEventKeyword2").build()
-        #self.register_intent(random_event_intent3, self.handle_first_lamp_off_intent)
+        random_event_intent3 = IntentBuilder("RandomEventIntent3").\
+            require("RandomEventKeyword2").build()
+        self.register_intent(random_event_intent3, self.handle_first_lamp_off_intent)
         
-        #random_event_intent4 = IntentBuilder("RandomEventIntent4").\
-        #    require("secondLightKeyword2").build()
-       # self.register_intent(random_event_intent4, self.handle_second_lamp_off_intent)
+        random_event_intent4 = IntentBuilder("RandomEventIntent4").\
+           require("secondLightKeyword2").build()
+        self.register_intent(random_event_intent4, self.handle_second_lamp_off_intent)
 
     def handle_first_lamp_on_intent(self, message):
         url="https://10.106.0.225/lamp1/1"
