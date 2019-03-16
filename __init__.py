@@ -45,12 +45,12 @@ class TodayHistorySkill(MycroftSkill):
         self.speak("As you wish") 
         
     def handle_first_lamp_off_intent(self, message):
-        url="https://10.106.0.225/lamp1/1"
+        url="https://10.106.0.225/lamp1/0"
         r = urllib.request.urlopen("https://10.106.0.225/lamp1/0", context=ssl.SSLContext()).read()
         self.speak("As you wish") 
     
     def handle_second_lamp_off_intent(self, message):
-        url="https://10.106.7.2/lamp2/1"
+        url="https://10.106.7.2/lamp2/0"
         r = urllib.request.urlopen("https://10.106.7.2/lamp2/0", context=ssl.SSLContext()).read()
         self.speak("As you wish")
 
