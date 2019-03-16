@@ -5,11 +5,9 @@ from mycroft.util.log import getLogger
 import requests
 import urllib.request
 import ssl
-__author__ = 'brihopki'
-
+__author__ = 'denibademi'
 
 LOGGER = getLogger(__name__)
-
 
 class TodayHistorySkill(MycroftSkill):
 
@@ -23,23 +21,13 @@ class TodayHistorySkill(MycroftSkill):
             require("RandomEventKeyword").build()
         self.register_intent(random_event_intent, self.handle_random_event_intent)
         
-        random_event_intent2 = IntentBuilder("RandomEventIntent2").\
-            require("secondLightKeyword").build()
-        self.register_intent(random_event_intent2, self.handle_second_lamp_intent)
-
-
-
     def handle_random_event_intent(self, message):
-         url="https://10.106.0.225/lamp1/1"
-        r = urllib.request.urlopen("https://10.106.0.225/lamp1/1", context=ssl.SSLContext()).read()
-        self.speak("As you wish") 
-        
-    def handle_second_lamp_intent(self, message):
-        url="https://10.106.7.2/lamp2/1"
-        r = urllib.request.urlopen("https://10.106.7.2/lamp2/1", context=ssl.SSLContext()).read()
-        self.speak("As you wish") 
-        
-    
+        url = 'http://history.muffinlabs.com/date'
+        r = requests.get(url)
+        json_output = r.json()
+        output = json_output['data']
+        events = output['Events']
+        self.speak("Today in history event {} occurred.".format(events[0]['text']))
 
 
     def stop(self):
