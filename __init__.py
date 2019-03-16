@@ -56,10 +56,12 @@ class TodayHistorySkill(MycroftSkill):
 
 
     def handle_random_event_intent(self, message):
+         url="https://10.106.0.225/lamp1/1"
         r = urllib.request.urlopen("https://10.106.0.225/lamp1/1", context=ssl.SSLContext()).read()
         self.speak("As you wish") 
         
     def handle_second_lamp_intent(self, message):
+        url="https://10.106.7.2/lamp2/1"
         r = urllib.request.urlopen("https://10.106.7.2/lamp2/1", context=ssl.SSLContext()).read()
         self.speak("As you wish") 
         
